@@ -1,13 +1,18 @@
-var express = require('express')
+var express = require('express');
 var app = express();
+var fs = require('fs');
 
-app.set('port', (process.env.PORT || 5000))
-app.use(express.static(__dirname + '/public'))
+
+App.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
+
+var data = fs.readFileSync('target.txt');
+var data1 = data.toString();
 
 app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
+  response.send(data1);
+});
 
 app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-})
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
