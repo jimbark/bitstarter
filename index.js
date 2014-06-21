@@ -2,12 +2,12 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
+var data = fs.readFileSync('inedx.html');
+var data1 = data.toString();
 
-App.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-var data = fs.readFileSync('target.txt');
-var data1 = data.toString();
 
 app.get('/', function(request, response) {
   response.send(data1);
